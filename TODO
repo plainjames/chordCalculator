@@ -1,0 +1,42 @@
+1.
+Make variable octave starting positions as an input param to the octave class. Currently octaves first note is C and adjust
+chord parsing according to inital note. This will essentially change the octave class into a set of chromatic scales in which
+all scales and chords can be built from.
+
+2.
+Add MIDI output through MidiUtils module. The program will simply view the piano as a list of 12 binary switches (12 bits).
+i.e. [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0] where the first index list[0] implicitly represents middle C, list[1] represents C#,
+list[2] represents and so fourth (currently of an arbitrary octave). 
+
+Thus the list above represents the chord of C major, as C aka list [0] is switched on, E aka list[4] is switched on and G aka list[7] 
+is switched on. Must to find a way to parse this list such that it can be used to generate chords through the MidiUtils module.
+
+4. Implement the physical frequencies of chords and notes such that sinusoidal waveforms can be generated for the sounds. 
+This will require various octaves instead of the currently arbitrary one.
+
+3. A nice general idea may be to correlate the frequency of notes to that of visual light.
+Visualising: outputting a sequence of chords to a visual representation. There are obvious patterns within the act of
+deriving and manipulating chords that can be immediately seen through this binary list. For instance, to derive inverted chords
+from a C major chord, we can augment the chord by one semitone repeatedly. 
+
+For instance, take the initial chord of C minor (C, Eb, G bits switched on) below
+
+[1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]  C(2,3)
+Translating up x semitones...
+[0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]  C#(2,3) 
+[0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0]  D(2,3)
+[0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0]  D#(2,3)
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1]  E(2,3)
+[1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0]  (4,2)
+[1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0]   
+[0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0]  
+[0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0]  
+[0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1]  
+[1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0] 
+[0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]  
+[0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1] 
+[1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]
+...
+
+
+
