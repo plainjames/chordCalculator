@@ -19,19 +19,34 @@ Visualising: outputting a sequence of chords to a visual representation. There a
 deriving and manipulating chords that can be immediately seen through this binary list. For instance, to derive inverted chords
 from a C major chord, we can augment the chord by one semitone repeatedly. 
 
-For instance, take the initial chord of C minor (C, Eb, G bits switched on) below
+A visual way to represent chords. 
+1. @ denotes the root note of the chord
+2. The first note in the array goes on the far left.
 
-[1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]  C(2,3)
+notation: C(3,2) = C major = C(3,2)G = C(3,2)G 
+
+The numbers simply represent the numbers of 0s in between each one read from the first most left most one.
+
+Generically a chord of the form: (3,2) chord is a major chord | (2,3) chord is a minor chord | 
+(3,3) chord is an augmented chord | (2,2) chord is a diminished chord | ...
+
+the spacing carries the information of chord type :: e.g. (3,2) is a major chord because
+
+For instance, take the initial chord of C minor (C, Eb, G bits switched on) below the piano representation.
+
+{_, #, _, #, _, _, #, _, #, _, #, _) sharp is hash (high bar), regular note is low bar (ignore flats)
+{C, C, D, D, E, F, F, G, G, A, A, B}
+------------------------------------
+[1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]  @C(2,3)
 Translating up x semitones...
-[0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]  C#(2,3) 
-[0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0]  D(2,3)
-[0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0]  D#(2,3)
-[0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1]  E(2,3)
-[1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0]  (4,2)
-[1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0]   
-[0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0]  
-[0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0]  
-[0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1]  
+[0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0]  @C#(2,3) 
+[0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0]  @D(2,3)
+[0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0]  @D#(2,3)
+[0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1]  @E(2,3)
+[1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0]  C(4,2)@F (F first inversion)  
+[0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0]  C#(4,2)@F#
+[0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0]  C#(4,2)@F#
+[0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1]  C#(4,2)@F#
 [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0] 
 [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0]  
 [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1] 
